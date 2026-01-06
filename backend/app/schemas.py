@@ -16,3 +16,18 @@ class Login(BaseModel):
     email : EmailStr
     password : str
 
+
+class blog_create(BaseModel):
+    title : str
+    description : str
+    author : int
+
+class blogs_put(BaseModel):
+    title : str
+    description : str
+
+class blog_response(blog_create):
+    blog_id :int
+
+    class Config:
+        from_attributes = True
