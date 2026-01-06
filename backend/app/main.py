@@ -74,6 +74,11 @@ def get_blog_by_id(blog_id : int ,db : Session = Depends(get_db)):
         return HTTPException(status_code=404, detail = 'blog not found')
     return blog
 
+@app.get('/blogs/users/{user_id}', response_model=list[schemas.blog_response])
+def get_blog_by_user(user_id :int,db : Session = Depends(get_db)):
+    blogs = db.query(models.Blogs).filter(models.Blogs.author == user_id).all()
+    return blogs
+
 @app.post('/blog/create', response_model= schemas.blog_response)
 def post_blog(data : schemas.blog_create , db : Session = Depends(get_db)):
     user = db.query(models.Users).filter(models.Users.user_id == data.author).first()
