@@ -5,6 +5,7 @@ import Home from "../pages/Home"
 import Dashboard from "../pages/Dashboard"
 import Profile from "../pages/Profile"
 import LoginProvider from "../contexts/LoginProvider"
+import BlogIndividual from "../pages/BlogIndividual"
 
 function App() {
   
@@ -14,11 +15,13 @@ function App() {
     <LoginProvider>
     <BrowserRouter>
       <Routes>
+        <Route path="" element={<Signin/>}/>
         <Route path="/home" element={<Home/>}/>
         <Route path="/signin" element={<Signin/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/profile" element={<Profile/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path="/blog/:id" element={<BlogIndividual/>}/>
 
       </Routes>
     </BrowserRouter>

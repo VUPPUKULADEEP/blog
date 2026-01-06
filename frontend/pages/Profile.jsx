@@ -26,7 +26,7 @@ const Profile = () => {
     </div>
     <div >
     {userBlogs && userBlogs.map((blog) => (
-       <IndCard key={blog['blog_id']} data={blog}/>
+       <IndCard key={blog['blog_id']} data={blog} edit={true}/>
     ))}
     </div>
     </>
