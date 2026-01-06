@@ -1,2 +1,3 @@
 test.db
 backend/app/__pycache__
+backend/venv/*

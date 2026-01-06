@@ -4,13 +4,14 @@ import Signup from "../pages/Signup"
 import Home from "../pages/Home"
 import Dashboard from "../pages/Dashboard"
 import Profile from "../pages/Profile"
-
+import LoginProvider from "../contexts/LoginProvider"
 
 function App() {
   
 
   return (
     <>
+    <LoginProvider>
     <BrowserRouter>
       <Routes>
         <Route path="/home" element={<Home/>}/>
@@ -21,6 +22,7 @@ function App() {
 
       </Routes>
     </BrowserRouter>
+    </LoginProvider>
     </>
   )
 }

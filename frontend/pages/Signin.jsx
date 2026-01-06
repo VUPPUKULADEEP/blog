@@ -3,8 +3,15 @@ import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios'
+import { useContext, useEffect } from 'react'
+import { AppContext } from '../contexts/LoginProvider'
+
 
 const Signin = () => {
+    const {userData, setUserData} =  useContext(AppContext);
+    useEffect(()=>{
+        console.log(userData)
+    },[userData])
     const navigate = useNavigate()
   const { register, formState: { errors }, handleSubmit } = useForm()
   const call = async (data) =>{
@@ -13,7 +20,9 @@ const Signin = () => {
         const response = await axios.post("http://127.0.0.1:8000/auth/login", data)
     
     console.log(response.data)
-    credintials = response.data}
+    setUserData(userData)
+    credintials = response.data
+    }
     catch(error) {
         console.log(error)
     }

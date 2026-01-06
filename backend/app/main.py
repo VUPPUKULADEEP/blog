@@ -38,10 +38,10 @@ def login(data : schemas.Login, db : Session = Depends(get_db)):
         raise HTTPException(detail='invalid credintials')
 
     return {
-        'message' : 'login successfull',
         'id' : user.user_id,
         'fullname' : user.fullname,
         'email': user.email,
+        'loginStatus' : True
     }
 
 @app.post('/create/user', response_model= schemas.UserResponse)
