@@ -3,7 +3,18 @@ from sqlalchemy.orm import Session
 from app.database import Base, get_db, engine
 from . import models,schemas
 from app.models import Base
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI(title='blogs')
+origins = ["http://localhost:5173", 'http://127.0.0.1:5173']
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins = ["*"],
+    
+    allow_methods = ["*"],
+    allow_headers = ["*"],
+)
+
 
 Base.metadata.create_all(bind = engine)
 
