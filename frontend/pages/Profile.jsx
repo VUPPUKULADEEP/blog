@@ -18,14 +18,19 @@ const Profile = () => {
   return (
     <>
     <PrimarySearchAppBar/>
+    <div >
     <img height={100} width={100} src={'../src/assets/profile.jpg'}/>
     <p>{userData.email}</p>
     <p>{userData.fullname}</p>
     <p>{userData.id}</p>
+    </div>
+    <div >
     {userBlogs && userBlogs.map((blog) => (
        <IndCard key={blog['blog_id']} data={blog}/>
     ))}
+    </div>
     </>
+    
   )
 }
 
