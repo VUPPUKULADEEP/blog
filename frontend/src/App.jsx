@@ -6,10 +6,11 @@ import Dashboard from "../pages/Dashboard"
 import Profile from "../pages/Profile"
 import LoginProvider from "../contexts/LoginProvider"
 import BlogIndividual from "../pages/BlogIndividual"
+import Editor from "../pages/Blogedit"
+import Blogedit from "../pages/Blogedit"
+
 
 function App() {
-  
-
   return (
     <>
     <LoginProvider>
@@ -22,6 +23,8 @@ function App() {
         <Route path="/profile" element={<Profile/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path="/blog/:id" element={<BlogIndividual/>}/>
+        <Route path="/blog/edit/:id" element={<Blogedit/>}/>
+
 
       </Routes>
     </BrowserRouter>

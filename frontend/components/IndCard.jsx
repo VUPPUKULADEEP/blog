@@ -12,17 +12,17 @@ export default function IndCard({data, edit}) {
   const navigate = useNavigate();
   return (
     <>
-    <Card onClick={() => {navigate(`/blog/${data.blog_id}`)}} sx={{ maxWidth: 745 }} style={{cursor : 'pointer'}} className="card shadow-lg">
+    <Card  sx={{ maxWidth: 745 }} style={{cursor : 'pointer'}} className="card shadow-lg">
       
       <CardContent>
         <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Typography gutterBottom variant="h6" component="div">
+          <Typography gutterBottom variant="h6" component="div" onClick={() => {navigate(`/blog/${data.blog_id}`)}}>
           {data.title}
         </Typography>
         {edit&&<EditIcon onClick={()=>{navigate(`/blog/edit/${data.blog_id}`)}} className='d-flex flex-column justify-content-end'/>}
         </Box>
         
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+        <Typography variant="body2" sx={{ color: 'text.secondary' }} onClick={() => {navigate(`/blog/${data.blog_id}`)}}>
           {data.description}
         </Typography>
       </CardContent>

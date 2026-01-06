@@ -6,7 +6,9 @@ import axios from 'axios'
 
 const BlogIndividual = () => {
     const {id} = useParams();
-    const [blog, setBlog] = useState()
+    const [blog, setBlog] = useState(null)
+    const [loading, setLoading] = useState(true)
+
     useEffect(() => {
       const fetchBlog = async () => {
       try{
@@ -16,7 +18,10 @@ const BlogIndividual = () => {
         console.log(blog)
       }
       catch(error){
-        console.error(error);
+        console.error(error); 
+      }
+      finally{
+        setLoading(false)
       }
     }
     fetchBlog();
@@ -24,10 +29,11 @@ const BlogIndividual = () => {
   return (
     <>
     <PrimarySearchAppBar/>
-    <div className='d-flex flex-column justify-content-center align-items-center'>
+    {loading && <p>Loading...</p>}
+    {!loading && <div className='d-flex flex-column justify-content-center align-items-center'>
       <h1>{blog.title}</h1>
     <p>{blog.description}</p>
-    </div>
+    </div>}
     
 
     </>
