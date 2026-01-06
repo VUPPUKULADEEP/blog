@@ -1,10 +1,27 @@
 
 import { useForm } from 'react-hook-form'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 const Signup = () => {
-
+    const navigate = useNavigate()
     const { register, formState: { errors }, handleSubmit } = useForm()
+    const call = async (data) => {
+        let credintials = null
+        try {
+            console.log(data)
+            const response = await axios.post("http://127.0.0.1:8000/create/user", data)
+            console.log(response.data)
+            credintials = response.data
+        }
+        catch (error) {
+            console.log(error)
+        }
+        if (credintials && credintials['user_id']) {
+            navigate('/signin')
+        }
+    }
 
     return (
         <>
@@ -32,8 +49,7 @@ const Signup = () => {
                         {errors.cnfpassword && <p class='error'>{errors.cnfpassword.message}</p>}
                     </div>
                     <div className="d-grid gap-2 col-12 mx-auto">
-                        <button className="btn btn-primary" type="submit" >submit </button>
-
+                        <button className="btn btn-primary" type="submit" onClick={handleSubmit(call)}>submit </button>
                     </div>
 
                 </form>
