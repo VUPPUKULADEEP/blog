@@ -18,7 +18,7 @@ const Profile = () => {
   return (
     <>
     <PrimarySearchAppBar/>
-    <img height={100} width={100} src={'../src/assets/icon.jpg'}/>
+    <img height={100} width={100} src={'../src/assets/profile.jpg'}/>
     <p>{userData.email}</p>
     <p>{userData.fullname}</p>
     <p>{userData.id}</p>
