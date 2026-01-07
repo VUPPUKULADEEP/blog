@@ -18,7 +18,7 @@ const BlogEdit = () => {
     if(!blogData?.title){
           return 'title is missing'
         }
-    const payload = { title: blogData.tile, description: content };
+    const payload = { title: blogData.title, description: content };
     console.log("Payload being sent to API:", payload);
 
     const res = await axios.put(`http://127.0.0.1:8000/blogs/modify/${id}`, payload);

@@ -4,6 +4,8 @@ from app.database import Base, get_db, engine
 from . import models,schemas
 from app.models import Base
 from fastapi.middleware.cors import CORSMiddleware
+import json
+
 
 app = FastAPI(title='blogs')
 origins = ["http://localhost:5173", 'http://127.0.0.1:5173']
@@ -67,12 +69,16 @@ def get_blog(db : Session = Depends(get_db)):
     blogs = db.query(models.Blogs).all()
     return blogs
 
-@app.get('/blogs/{blog_id}', response_model=schemas.blog_response)
+@app.get('/blogs/{blog_id}')
 def get_blog_by_id(blog_id : int ,db : Session = Depends(get_db)):
     blog = db.query(models.Blogs).filter(models.Blogs.blog_id == blog_id).first()
     if not blog:
         return HTTPException(status_code=404, detail = 'blog not found')
-    return blog
+    return {
+        "blog_id" : blog.blog_id,
+        "title" : blog.title,
+        "description" : json.loads(blog.description) if blog.description else []
+    }
 
 @app.get('/blogs/users/{user_id}', response_model=list[schemas.blog_response])
 def get_blog_by_user(user_id :int,db : Session = Depends(get_db)):
@@ -102,8 +108,7 @@ def modify_blog(blog_id : int, data : schemas.blogs_put, db : Session = Depends(
     if not blog:
         raise HTTPException (status_code= 404, detail ='blog not found')
     blog.title = data.title
-    blog.description = data.description
-
+    blog.description = json.dumps(data.description)
     db.commit()
     db.refresh(blog)
     return blog
