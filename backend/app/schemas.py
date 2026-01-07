@@ -24,7 +24,7 @@ class blog_create(BaseModel):
 
 class blogs_put(BaseModel):
     title : str
-    description : str
+    description : list
 
 class blog_response(blog_create):
     blog_id :int
