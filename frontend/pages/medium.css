@@ -1,0 +1,121 @@
+.medium-editor {
+  max-width: 720px;
+  margin: 40px auto;
+  font-family: 'Georgia', serif;
+}
+
+.medium-editor .ProseMirror {
+  font-size: 20px;
+  line-height: 1.8;
+  outline: none;
+}
+
+.medium-editor h1 {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.medium-editor h2 {
+  font-size: 28px;
+}
+
+.medium-editor p {
+  margin: 16px 0;
+}
+
+.medium-editor button {
+  background: black;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  margin-right: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.medium-editor {
+  max-width: 720px;
+  margin: 40px auto;
+  font-family: Georgia, serif;
+}
+
+.medium-editor .ProseMirror {
+  min-height: 300px;
+  padding: 10px;
+  outline: none;
+
+  /* THESE ARE IMPORTANT */
+  white-space: pre-wrap;
+  word-break: break-word;
+  cursor: text;
+}
+
+.medium-editor .ProseMirror p {
+  margin: 16px 0;
+}
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.toolbar button {
+    color: black;
+    text-decoration: solid;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+}
+
+.toolbar button:hover {
+  background: #f0f0f0;
+}
+
+.medium-editor {
+  max-width: 760px;
+  margin: 40px auto;
+  font-family: Georgia, serif;
+}
+
+.medium-editor .ProseMirror {
+  min-height: 400px;
+  padding: 12px;
+  outline: none;
+  cursor: text;
+
+  white-space: break-spaces !important;
+  word-break: break-word;
+
+  font-size: 20px;
+  line-height: 1.8;
+}
+
+.medium-editor .ProseMirror p {
+  margin: 16px 0;
+}
+
+.medium-editor h1 { font-size: 36px }
+.medium-editor h2 { font-size: 30px }
+.medium-editor h3 { font-size: 26px }
+
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.toolbar button {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+}
+
+.toolbar button:hover {
+  background: #f5f5f5;
+}
+
