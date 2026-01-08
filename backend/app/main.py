@@ -102,7 +102,7 @@ def post_blog(data : schemas.blog_create , db : Session = Depends(get_db)):
         return HTTPException(status_code = 400, detail='author not exists')
     new_blog = models.Blogs(
         title = data.title,
-        description = data.description,
+        description = json.dumps(data.description),
         author = data.author
     )
     db.add(new_blog)
