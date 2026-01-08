@@ -8,6 +8,7 @@ import LoginProvider from "../contexts/LoginProvider"
 import BlogIndividual from "../pages/BlogIndividual"
 import Editor from "../pages/Blogedit"
 import Blogedit from "../pages/Blogedit"
+import BlogCreate from "../pages/BlogCreate"
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path="/blog/:id" element={<BlogIndividual/>}/>
         <Route path="/blog/edit/:id" element={<Blogedit/>}/>
+        <Route path="/blog/create" element={<BlogCreate/>}/>
 
 
       </Routes>

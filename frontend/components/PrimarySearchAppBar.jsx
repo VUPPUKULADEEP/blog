@@ -16,6 +16,8 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { useNavigate } from 'react-router-dom';
+import AddIcon from '@mui/icons-material/Add';
+
 
 //see 100 line for profile and dashboard
 
@@ -94,6 +96,9 @@ export default function PrimarySearchAppBar() {
   const gotoHome = () => {
     navigate('/home')
   }
+  const gotocreate = () => {
+    navigate('/blog/create')
+  }
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -148,6 +153,18 @@ export default function PrimarySearchAppBar() {
         </IconButton>
         <p>Profile</p>
       </MenuItem>
+      
+        {/* <IconButton
+          size="large"
+          aria-label="account of current user"
+          aria-controls="primary-search-account-menu"
+          aria-haspopup="true"
+          color="inherit"
+        > */}
+          <AddIcon onClick={gotocreate}/>
+        {/* </IconButton> */}
+        
+      
     </Menu>
   );
 
@@ -185,8 +202,17 @@ export default function PrimarySearchAppBar() {
           </Search> */}
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            
-            
+            <IconButton
+              size="large"
+              edge="end"
+              aria-label="account of current user"
+              aria-controls={menuId}
+              aria-haspopup="true"
+              onClick={gotocreate}
+              color="inherit"
+            >
+            <AddIcon />
+            </IconButton>
             <IconButton
               size="large"
               edge="end"
