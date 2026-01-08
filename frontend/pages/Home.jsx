@@ -4,6 +4,7 @@ import PrimarySearchAppBar from '../components/PrimarySearchAppBar'
 import { useEffect } from 'react'
 import axios from 'axios'
 import IndCard from '../components/IndCard'
+import '../components/indCard.css'
 
 const Home = () => {
   const [blogs, setBlogs] = useState([])
@@ -14,8 +15,6 @@ const Home = () => {
         setBlogs(response.data)
       } catch (error) {
         console.error(error);
-      } finally {
-        setLoading(false)
       }
     }
     fetchBlog();
@@ -23,9 +22,11 @@ const Home = () => {
   return (
     <>
     <PrimarySearchAppBar/>
+    <div className='cont'>
     {blogs.map((blog) => (
            <IndCard key={blog['blog_id']} data={blog} edit={false}/>
         ))}
+    </div>
     </>
   )
 }

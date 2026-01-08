@@ -67,7 +67,17 @@ def create_user(data : schemas.UserCreate , db : Session = Depends(get_db)):
 @app.get('/blogs/', response_model=list[schemas.blog_response])
 def get_blog(db : Session = Depends(get_db)):
     blogs = db.query(models.Blogs).all()
-    return blogs
+    result = []
+    for blog in blogs:
+        result.append({
+            'blog_id' : blog.blog_id,
+            'author' : blog.author,
+            'title' : blog.title,
+            'description' : json.loads(blog.description),
+        })
+    
+    return result
+
 
 @app.get('/blogs/{blog_id}')
 def get_blog_by_id(blog_id : int ,db : Session = Depends(get_db)):
