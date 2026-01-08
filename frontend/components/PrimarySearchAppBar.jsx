@@ -87,9 +87,9 @@ export default function PrimarySearchAppBar() {
     handleMenuClose();
     navigate('/profile')
   }
-  const gotoDashBoard = () => {
+  const gotoLogout = () => {
     handleMenuClose();
-    navigate('/dashboard')
+    navigate('/')
   }
   const gotoHome = () => {
     navigate('/home')
@@ -112,7 +112,7 @@ export default function PrimarySearchAppBar() {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={gotoProfile}>Profile</MenuItem>
-      <MenuItem onClick={gotoDashBoard}>Dashboard</MenuItem>
+      <MenuItem onClick={gotoLogout}>Logout</MenuItem>
     </Menu>
   );
 
