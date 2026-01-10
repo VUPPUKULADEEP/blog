@@ -22,7 +22,6 @@ function App() {
         <Route path="/signin" element={<Signin/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/profile" element={<Profile/>}/>
-        <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path="/blog/:id" element={<BlogIndividual/>}/>
         <Route path="/blog/edit/:id" element={<Blogedit/>}/>
         <Route path="/blog/create" element={<BlogCreate/>}/>

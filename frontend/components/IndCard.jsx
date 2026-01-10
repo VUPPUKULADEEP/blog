@@ -24,7 +24,7 @@ export default function IndCard({data, edit}) {
         </Box>
         {console.log(data)}
         <Typography variant="body2" sx={{ color: 'text.secondary' }} >
-          {data?.description?.[0]?.data?.text.slice(0,49)}
+          {data?.description?.[0]?.data?.text.slice(0,49)+'...'}
         </Typography>
       </CardContent>
     </Card>

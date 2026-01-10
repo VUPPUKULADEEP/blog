@@ -93,7 +93,16 @@ def get_blog_by_id(blog_id : int ,db : Session = Depends(get_db)):
 @app.get('/blogs/users/{user_id}', response_model=list[schemas.blog_response])
 def get_blog_by_user(user_id :int,db : Session = Depends(get_db)):
     blogs = db.query(models.Blogs).filter(models.Blogs.author == user_id).all()
-    return blogs
+    result = []
+    for blog in blogs:
+        result.append({
+            'blog_id' : blog.blog_id,
+            'author' : blog.author,
+            'title' : blog.title,
+            'description' : json.loads(blog.description),
+        })
+    
+    return result
 
 @app.post('/blog/create', response_model= schemas.blog_response)
 def post_blog(data : schemas.blog_create , db : Session = Depends(get_db)):
