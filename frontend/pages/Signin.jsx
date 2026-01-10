@@ -8,55 +8,55 @@ import { AppContext } from '../contexts/LoginProvider'
 
 
 const Signin = () => {
-    const {userData, setUserData} =  useContext(AppContext);
-    useEffect(()=>{
+    const { userData, setUserData } = useContext(AppContext);
+    useEffect(() => {
         console.log(userData)
-    },[userData])
+    }, [userData])
     const navigate = useNavigate()
-  const { register, formState: { errors }, handleSubmit } = useForm()
-  const call = async (data) =>{
-    let credintials = null
-    try{
-        const response = await axios.post("http://127.0.0.1:8000/auth/login", data)
-    
-    console.log(response.data)
-    setUserData(response.data)
-    credintials = response.data
-    }
-    catch(error) {
-        console.log(error)
-    }
-    if(credintials['id']){
-        navigate('/home')
-    }
+    const { register, formState: { errors }, handleSubmit } = useForm()
+    const call = async (data) => {
+        let credintials = null
+        try {
+            const response = await axios.post("http://127.0.0.1:8000/auth/login", data)
 
-  }
-      return (
-          <>
-              <div id="container" className='d-flex justify-content-center align-items-center' style={{ height: '100vh', minWidth: '50%' }}>
-                  <form id="main-container" className="d-flex flex-column justify-content-start align-items-center" style={{ width: '25%' }} >
-                      <h3>login here </h3>
-                      
-                      <div className="form-floating mb-3 col-12">
-                          <input type="email" className="form-control" id="email" placeholder="name@example.com" {...register('email')} />
-                          <label htmlFor="email">email</label>
-                          {errors.email && <p class='error'>{errors.email.message}</p>}
-                      </div>
-                      <div className="form-floating mb-3 col-12">
-                          <input type="password" className="form-control" id="password" placeholder="xxxxxxxxxx" {...register('password')} />
-                          <label htmlFor="password">password</label>
-                          {errors.password && <p class='error'>{errors.password.message}</p>}
-                      </div>
-                      
-                      <div className="d-grid gap-2 col-12 mx-auto">
-                          <button className="btn btn-primary" type="submit" onClick={handleSubmit(call)}>submit </button>
-  
-                      </div>
-  
-                  </form>
-              </div>
-          </>
-      )
+            console.log(response.data)
+            setUserData(response.data)
+            credintials = response.data
+        }
+        catch (error) {
+            console.log(error)
+        }
+        if (credintials['id']) {
+            navigate('/home')
+        }
+
+    }
+    return (
+        <>
+            <div className="container vh-100 d-flex justify-content-center align-items-center">
+                <form className="col-12 col-sm-10 col-md-6 col-lg-5 flex justify-content-center align-items-center">
+                    <h3 className="mb-4">Login here </h3>
+
+                    <div className="form-floating mb-3 col-12">
+                        <input type="email" className="form-control" id="email" placeholder="name@example.com" {...register('email')} />
+                        <label htmlFor="email">email</label>
+                        {errors.email && <p class='error'>{errors.email.message}</p>}
+                    </div>
+                    <div className="form-floating mb-3 col-12">
+                        <input type="password" className="form-control" id="password" placeholder="xxxxxxxxxx" {...register('password')} />
+                        <label htmlFor="password">password</label>
+                        {errors.password && <p class='error'>{errors.password.message}</p>}
+                    </div>
+
+                    <div className="d-grid gap-2 col-12 mx-auto">
+                        <button className="btn btn-primary" type="submit" onClick={handleSubmit(call)}>submit </button>
+
+                    </div>
+
+                </form>
+            </div>
+        </>
+    )
 }
 
 export default Signin

@@ -25,8 +25,8 @@ const Signup = () => {
 
     return (
         <>
-            <div id="container" className='d-flex justify-content-center align-items-center' style={{ height: '100vh', minWidth: '50%' }}>
-                <form id="main-container" className="d-flex flex-column justify-content-start align-items-center" style={{ width: '25%' }} onSubmit={handleSubmit((register) => { console.log(JSON.stringify(register)) })}>
+            <div className="container vh-100 d-flex justify-content-center align-items-center">
+                <form className="col-12 col-sm-10 col-md-6 col-lg-5 flex justify-content-center align-items-center" onSubmit={handleSubmit((register) => { console.log(JSON.stringify(register)) })}>
                     <h3>Register here </h3>
                     <div className="form-floating mb-3 col-12">
                         <input type="text" className="form-control" id="fullname" placeholder="john doe" {...register('fullname', { required: 'first name is required' })} />
