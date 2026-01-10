@@ -18,10 +18,11 @@ const BlogEdit = () => {
 
   const editSubmit = async () => {
   try {
+    const output = await editorInstance.current.save();
     if(!editTitle){
           return console.log('title is missing')
     }
-    const payload = { title: editTitle, description: content };
+    const payload = { title: editTitle, description: output.blocks };
     console.log("Payload being sent to API:", payload);
 
     const res = await axios.put(`http://127.0.0.1:8000/blogs/modify/${id}`, payload);
@@ -35,7 +36,7 @@ const BlogEdit = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        
+         
         const res = await axios.get(`http://127.0.0.1:8000/blogs/${id}`);
         console.log(res.data)
         setBlogData(res.data);
