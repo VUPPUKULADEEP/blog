@@ -83,7 +83,7 @@ useEffect(() => {
 
   return (<>
   <PrimarySearchAppBar/>
-  <div className="story-editor">
+  <div className="mx-auto p-2 col-5">
 
     
     <input
@@ -103,7 +103,10 @@ useEffect(() => {
   <div className="story-editor">
       <div id="editorjs" />
     </div>
-    <button type="button"  className='btn-primary' onClick={createSubmit}>save</button>
+    <div className="d-flex justify-content-center mx-auto p-2 col-6">
+    <button type="button"  className='btn btn-primary  col-2' onClick={createSubmit}>save</button>
+
+    </div>
   </>
     
   );
