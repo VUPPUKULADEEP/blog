@@ -30,8 +30,10 @@ const BlogCreate = () => {
 
     const res = await axios.post(`http://127.0.0.1:8000/blog/create`, payload);
     console.log(res.data);
+    alert('create success')
   } catch (error) {
     console.log(error);
+    alert('create failed')
   }
 };
 
