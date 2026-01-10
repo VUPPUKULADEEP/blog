@@ -18,8 +18,8 @@ const Profile = () => {
   return (
     <>
     <PrimarySearchAppBar/>
-    <div >
-    <img height={100} width={100} src={'../src/assets/profile.jpg'}/>
+    <div className='container-fluid d-flex flex-column align-items-center mt-5'>
+    <img height={100} width={100}  src={'../src/assets/profile.jpg'}/>
     <p>{userData.email}</p>
     <p>{userData.fullname}</p>
     <p>{userData.id}</p>
