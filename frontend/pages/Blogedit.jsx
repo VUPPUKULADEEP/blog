@@ -7,7 +7,10 @@ import Paragraph from "@editorjs/paragraph";
 import { useParams }from 'react-router-dom'
 import PrimarySearchAppBar from '../components/PrimarySearchAppBar'
 
+
+
 const BlogEdit = () => {
+  const [editTitle, setTitle] = useState("");
   const [blogData, setBlogData] = useState(null);
   const [content, setContent] = useState([]);
   const editorInstance = useRef(null);
@@ -15,10 +18,10 @@ const BlogEdit = () => {
 
   const editSubmit = async () => {
   try {
-    if(!blogData?.title){
-          return 'title is missing'
-        }
-    const payload = { title: blogData.title, description: content };
+    if(!editTitle){
+          return console.log('title is missing')
+    }
+    const payload = { title: editTitle, description: content };
     console.log("Payload being sent to API:", payload);
 
     const res = await axios.put(`http://127.0.0.1:8000/blogs/modify/${id}`, payload);
@@ -36,6 +39,7 @@ const BlogEdit = () => {
         const res = await axios.get(`http://127.0.0.1:8000/blogs/${id}`);
         console.log(res.data)
         setBlogData(res.data);
+        setTitle(res.data.title)
       } catch (err) {
         console.error(err);
       }
@@ -80,10 +84,28 @@ const BlogEdit = () => {
 
   return (<>
   <PrimarySearchAppBar/>
+  <div className="mx-auto p-2 col-5">
+
+    
+    <input
+      type="text"
+      value={editTitle}
+      onChange={(e) => {setTitle(e.target.value); console.log('changing')}}
+      style={{
+        width: "100%",
+        fontSize: "2rem",
+        border: "none",
+        outline: "none",
+        marginBottom: "1rem",
+      }}
+    />
+    </div>
   <div className="story-editor">
       <div id="editorjs" />
     </div>
-    <button type="button" onClick={editSubmit}>save</button>
+    <div className="d-flex justify-content-center mx-auto p-2 col-6">
+    <button type="button" onClick={editSubmit} className='btn btn-primary  col-2'>save</button>
+    </div>
   </>
     
   );

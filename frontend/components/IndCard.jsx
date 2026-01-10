@@ -16,14 +16,14 @@ export default function IndCard({data, edit}) {
     <Card  id='card' sx={{ width: '100%', maxWidth: 845 }} style={{cursor : 'pointer'}} className="container-fluid card shadow-lg">
       
       <CardContent >
-        <Box display="flex" justifyContent="space-between" alignItems="center" onClick={() => {navigate(`/blog/${data.blog_id}`)}}>
-          <Typography gutterBottom variant="h6" component="div" >
+        <Box display="flex" justifyContent="space-between" alignItems="center" >
+          <Typography gutterBottom variant="h6" component="div" onClick={() => {navigate(`/blog/${data.blog_id}`)}}>
           {data.title}
         </Typography>
         {edit&&<EditIcon onClick={()=>{navigate(`/blog/edit/${data.blog_id}`)}} className='d-flex flex-column justify-content-end'/>}
         </Box>
         {console.log(data)}
-        <Typography variant="body2" sx={{ color: 'text.secondary' }} >
+        <Typography variant="body2" sx={{ color: 'text.secondary' }} onClick={() => {navigate(`/blog/${data.blog_id}`)}}>
           {data?.description?.[0]?.data?.text.slice(0,49)+'...'}
         </Typography>
       </CardContent>
