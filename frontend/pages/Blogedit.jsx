@@ -27,8 +27,10 @@ const BlogEdit = () => {
 
     const res = await axios.put(`http://127.0.0.1:8000/blogs/modify/${id}`, payload);
     console.log(res.data);
+    alert('edit success')
   } catch (error) {
     console.log(error);
+    alert('edit not done')
   }
 };
 
