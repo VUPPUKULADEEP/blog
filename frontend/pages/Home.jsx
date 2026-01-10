@@ -4,7 +4,7 @@ import PrimarySearchAppBar from '../components/PrimarySearchAppBar'
 import { useEffect } from 'react'
 import axios from 'axios'
 import IndCard from '../components/IndCard'
-import '../components/indCard.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const Home = () => {
   const [blogs, setBlogs] = useState([])
@@ -22,7 +22,7 @@ const Home = () => {
   return (
     <>
     <PrimarySearchAppBar/>
-    <div className='cont'>
+    <div className='container-fluid d-flex flex-column align-items-center'>
     {blogs.map((blog) => (
            <IndCard key={blog['blog_id']} data={blog} edit={false}/>
         ))}

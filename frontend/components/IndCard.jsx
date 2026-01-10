@@ -13,7 +13,7 @@ export default function IndCard({data, edit}) {
   const navigate = useNavigate();
   return (
     <>
-    <Card  id='card' sx={{ maxWidth: 745 }} style={{cursor : 'pointer'}} className="card shadow-lg">
+    <Card  id='card' sx={{ width: '100%', maxWidth: 845 }} style={{cursor : 'pointer'}} className="container-fluid card shadow-lg">
       
       <CardContent >
         <Box display="flex" justifyContent="space-between" alignItems="center" onClick={() => {navigate(`/blog/${data.blog_id}`)}}>
