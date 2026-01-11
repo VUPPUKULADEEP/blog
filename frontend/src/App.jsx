@@ -8,7 +8,7 @@ import BlogIndividual from "../pages/BlogIndividual"
 import Editor from "../pages/Blogedit"
 import Blogedit from "../pages/Blogedit"
 import BlogCreate from "../pages/BlogCreate"
-
+import DummyPost from "../pages/DummyPost"
 
 function App() {
   return (
@@ -24,6 +24,7 @@ function App() {
         <Route path="/blog/:id" element={<BlogIndividual/>}/>
         <Route path="/blog/edit/:id" element={<Blogedit/>}/>
         <Route path="/blog/create" element={<BlogCreate/>}/>
+        <Route path="/dummy/post" element={<DummyPost/>}/>
 
 
       </Routes>

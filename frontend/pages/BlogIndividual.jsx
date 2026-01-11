@@ -27,31 +27,58 @@ const BlogIndividual = () => {
 
   return (
     <>
-      <PrimarySearchAppBar/>
-      <div className='d-flex flex-column justify-content-center align-items-center'>
-        <h1>{blog.title}</h1>
+  <PrimarySearchAppBar />
 
-        {blog.description && blog.description.map((block, index) => {
+  <div className="container my-5">
+    <div className="row justify-content-center">
+      <div className="col-12 col-md-10 col-lg-8 blog-content">
+
+        <h1 className="blog-title mb-4 text-center">
+          {blog.title}
+        </h1>
+
+        {blog.description?.map((block, index) => {
           if (block.type === "paragraph") {
-            return <p key={index}>{block.data.text}</p>;
-          } else if (block.type === "header") {
-            const Tag = `h${block.data.level || 2}`;
-            return <Tag key={index}>{block.data.text}</Tag>;
-          } else if (block.type === "list") {
-            if (block.data.style === "ordered") {
-              return <ol key={index}>
-                {block.data.items.map((item, i) => <li key={i}>{item}</li>)}
-              </ol>
-            } else {
-              return <ul key={index}>
-                {block.data.items.map((item, i) => <li key={i}>{item}</li>)}
-              </ul>
-            }
+            return (
+              <p key={index} className="blog-paragraph">
+                {block.data.text}
+              </p>
+            );
           }
+
+          if (block.type === "header") {
+            const Tag = `h${block.data.level || 6}`;
+            return (
+              <Tag key={index} className="blog-header mt-4 mb-2">
+                {block.data.text}
+              </Tag>
+            );
+          }
+
+          if (block.type === "list") {
+            return block.data.style === "ordered" ? (
+              <ol key={index} className="blog-list">
+                {block.data.items.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ol>
+            ) : (
+              <ul key={index} className="blog-list">
+                {block.data.items.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            );
+          }
+
           return null;
         })}
+
       </div>
-    </>
+    </div>
+  </div>
+</>
+
   )
 }
 
