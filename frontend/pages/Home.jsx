@@ -7,11 +7,12 @@ import IndCard from '../components/IndCard'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const Home = () => {
+  const API = import.meta.env.VITE_API_BASE_URL ; 
   const [blogs, setBlogs] = useState([])
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/blogs/`)
+        const response = await axios.get(`${API}/blogs/`)
         setBlogs(response.data)
       } catch (error) {
         console.error(error);

@@ -9,26 +9,37 @@ import EditIcon from '@mui/icons-material/Edit';
 import Box from '@mui/material/Box';
 import './indCard.css'
 
-export default function IndCard({data, edit}) {
+export default function IndCard({ data, edit }) {
   const navigate = useNavigate();
   return (
     <>
-    <Card  id='card' sx={{ width: '100%', maxWidth: 845 }} style={{cursor : 'pointer'}} className="container-fluid card shadow-lg">
-      
-      <CardContent >
-        <Box display="flex" justifyContent="space-between" alignItems="center" >
-          <Typography gutterBottom variant="h6" component="div" onClick={() => {navigate(`/blog/${data.blog_id}`)}}>
-          {data.title}
-        </Typography>
-        {edit&&<EditIcon onClick={()=>{navigate(`/blog/edit/${data.blog_id}`)}} className='d-flex flex-column justify-content-end'/>}
-        </Box>
-        {console.log(data)}
-        <Typography variant="body2" sx={{ color: 'text.secondary' }} onClick={() => {navigate(`/blog/${data.blog_id}`)}}>
-          {data?.description?.[0]?.data?.text.slice(0,49)+'...'}
-        </Typography>
-      </CardContent>
-    </Card>
-    
-</>
+      <Card id='card' sx={{ width: '100%', maxWidth: 845 }} style={{ cursor: 'pointer' }} className="container-fluid card shadow-lg" >
+          {edit && <EditIcon sx={{
+      position: 'absolute',
+      top: 8,
+      right: 8,
+      backgroundColor: 'white',
+      boxShadow: 1,
+      '&:hover': {
+        backgroundColor: '#f5f5f5',
+      },
+    }} onClick={() => { navigate(`/blog/edit/${data.blog_id}`) }} className='d-flex flex-column justify-content-end' />}
+        <CardContent  onClick={() => { navigate(`/blog/${data.blog_id}`) }}>
+          
+          
+
+          <Box display="flex" justifyContent="space-between" alignItems="center"  >
+            <Typography gutterBottom variant="h6" component="div" >
+              {data.title}
+            </Typography>
+          </Box>
+          {console.log(data)}
+          <Typography variant="body2" sx={{ color: 'text.secondary' }} >
+            {data?.description?.[0]?.data?.text.slice(0, 49) + '...'}
+          </Typography>
+        </CardContent>
+      </Card>
+
+    </>
   );
 }

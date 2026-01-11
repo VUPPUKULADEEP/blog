@@ -8,6 +8,7 @@ import { AppContext } from '../contexts/LoginProvider'
 
 
 const Signin = () => {
+    const API = import.meta.env.VITE_API_BASE_URL ; 
     const navigate = useNavigate()
     useEffect(() => {
         if(localStorage.getItem('user')){
@@ -19,7 +20,7 @@ const Signin = () => {
     const call = async (data) => {
         let credintials = null
         try {
-            const response = await axios.post("http://127.0.0.1:8000/auth/login", data)
+            const response = await axios.post(`${API}/auth/login`, data)
 
             console.log(response.data)
             localStorage.setItem("user", JSON.stringify(response.data));

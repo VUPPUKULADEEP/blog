@@ -5,13 +5,14 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 const Signup = () => {
+    const API = import.meta.env.VITE_API_BASE_URL ; 
     const navigate = useNavigate()
     const { register, formState: { errors }, handleSubmit } = useForm()
     const call = async (data) => {
         let credintials = null
         try {
             console.log(data)
-            const response = await axios.post("http://127.0.0.1:8000/create/user", data)
+            const response = await axios.post(`${API}/create/user`, data)
             console.log(response.data)
             credintials = response.data
         }
