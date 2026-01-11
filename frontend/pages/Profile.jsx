@@ -3,6 +3,7 @@ import PrimarySearchAppBar from '../components/PrimarySearchAppBar'
 import { AppContext } from '../contexts/LoginProvider'
 import axios from 'axios'
 import IndCard from '../components/IndCard'
+import PersonIcon from '@mui/icons-material/Person';
 
 const Profile = () => {
   const API = import.meta.env.VITE_API_BASE_URL;
@@ -20,7 +21,7 @@ const Profile = () => {
     <>
       <PrimarySearchAppBar />
       <div className='container-fluid d-flex flex-column align-items-center mt-5'>
-        <img height={100} width={100} src={'../src/assets/profile.jpg'} />
+        <PersonIcon sx={{ fontSize: 150 }}/>
         <p>email : {user.email}</p>
         <p>name : {user.fullname}</p>
         {/* <p>{user.id}</p> */}
