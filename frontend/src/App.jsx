@@ -9,6 +9,7 @@ import Editor from "../pages/Blogedit"
 import Blogedit from "../pages/Blogedit"
 import BlogCreate from "../pages/BlogCreate"
 import DummyPost from "../pages/DummyPost"
+import Welcome from "../pages/Welcome"
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
     <LoginProvider>
     <BrowserRouter>
       <Routes>
-        <Route path="" element={<Signin/>}/>
+        <Route path="" element={<Welcome/>}/>
         <Route path="/home" element={<Home/>}/>
         <Route path="/signin" element={<Signin/>}/>
         <Route path="/signup" element={<Signup/>}/>

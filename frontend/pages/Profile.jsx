@@ -5,11 +5,11 @@ import axios from 'axios'
 import IndCard from '../components/IndCard'
 
 const Profile = () => {
-  const {userData} = useContext(AppContext)
+  const user = JSON.parse(localStorage.getItem('user'));
   const [userBlogs, setUserBlogs] = useState(null)
   useEffect(() => {
     async function fetchData(){
-      const response = await axios.get(`http://127.0.0.1:8000/blogs/users/${userData.id}`)
+      const response = await axios.get(`http://127.0.0.1:8000/blogs/users/${user.id}`)
       console.log(response.data)
       setUserBlogs(response.data)
     }
@@ -20,9 +20,9 @@ const Profile = () => {
     <PrimarySearchAppBar/>
     <div className='container-fluid d-flex flex-column align-items-center mt-5'>
     <img height={100} width={100}  src={'../src/assets/profile.jpg'}/>
-    <p>{userData.email}</p>
-    <p>{userData.fullname}</p>
-    <p>{userData.id}</p>
+    <p>{user.email}</p>
+    <p>{user.fullname}</p>
+    <p>{user.id}</p>
     </div>
     <div >
     {userBlogs && userBlogs.map((blog) => (

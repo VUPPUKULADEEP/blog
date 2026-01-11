@@ -8,11 +8,13 @@ import { AppContext } from '../contexts/LoginProvider'
 
 
 const Signin = () => {
-    const { userData, setUserData } = useContext(AppContext);
-    useEffect(() => {
-        console.log(userData)
-    }, [userData])
     const navigate = useNavigate()
+    useEffect(() => {
+        if(localStorage.getItem('user')){
+                navigate('/home')
+        }
+    })
+    
     const { register, formState: { errors }, handleSubmit } = useForm()
     const call = async (data) => {
         let credintials = null
@@ -20,7 +22,14 @@ const Signin = () => {
             const response = await axios.post("http://127.0.0.1:8000/auth/login", data)
 
             console.log(response.data)
-            setUserData(response.data)
+            localStorage.setItem("user", JSON.stringify(response.data));
+            setTimeout(() => {
+                if (localStorage.getItem('user')) {
+                    localStorage.removeItem("user");
+                }
+
+            }, 60 * 60 * 1000);
+
             credintials = response.data
         }
         catch (error) {
@@ -52,7 +61,9 @@ const Signin = () => {
                         <button className="btn btn-primary" type="submit" onClick={handleSubmit(call)}>submit </button>
 
                     </div>
-
+                    <div className='d-flex justify-content-end mt-3'>
+                        <button className='btn btn-link' onClick={() => {navigate('/signup')}}>signup here</button>
+                    </div>
                 </form>
             </div>
         </>

@@ -13,7 +13,7 @@ import { AppContext } from "../contexts/LoginProvider";
 const BlogCreate = () => {
     const [title, setTitle] = useState("");
 
-    const {userData} = useContext(AppContext)
+    const user = JSON.parse(localStorage.getItem('user'))
   const [blogData, setBlogData] = useState(null);
   const [content, setContent] = useState([]);
   const editorInstance = useRef(null);
@@ -25,7 +25,7 @@ const BlogCreate = () => {
       alert("Title is required");
       return;
     }
-    const payload = { title: title, description: content , author: userData.id};
+    const payload = { title: title, description: content , author: user.id};
     console.log("Payload being sent to API:", payload);
 
     const res = await axios.post(`http://127.0.0.1:8000/blog/create`, payload);
