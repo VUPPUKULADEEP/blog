@@ -53,12 +53,6 @@ export const DummyBlogs = [
     }
   },
   {
-    "type": "code",
-    "data": {
-      "code": "function Hello() {\n  return <h1>Hello, React!</h1>;\n}"
-    }
-  },
-  {
     "type": "paragraph",
     "data": {
       "text": "This component can be reused across multiple pages or applications, demonstrating React's philosophy of reusable UI components."
@@ -123,12 +117,6 @@ export const DummyBlogs = [
   {
     "type": "header",
     "data": { "text": "Sample API Response", "level": 3 }
-  },
-  {
-    "type": "code",
-    "data": {
-      "code": "{\n  \"id\": 10,\n  \"title\": \"REST API Guide\",\n  \"author\": \"Admin\",\n  \"published\": true\n}"
-    }
   },
   {
     "type": "paragraph",
