@@ -8,9 +8,10 @@ import { useParams } from 'react-router-dom'
 import PrimarySearchAppBar from '../components/PrimarySearchAppBar'
 import { useContext } from "react";
 import { AppContext } from "../contexts/LoginProvider";
-
+import { useNavigate } from "react-router-dom";
 
 const BlogCreate = () => {
+  const navigate = useNavigate();
   const API = import.meta.env.VITE_API_BASE_URL;
   const [title, setTitle] = useState("");
 
@@ -36,6 +37,7 @@ const BlogCreate = () => {
       console.log(error);
       alert('create failed')
     }
+    navigate('/home');
   };
 
 
@@ -106,9 +108,9 @@ const BlogCreate = () => {
     <div className="story-editor">
       <div id="editorjs" />
     </div>
-    <div className="d-flex justify-content-center mx-auto p-2 col-6">
-      <button type="button" className='btn btn-primary  col-2' onClick={createSubmit}>save</button>
-
+    <div className="d-flex  justify-content-center align-items-center mx-auto p-2 col-6">
+      <button type="button" className='btn btn-primary  col-3' onClick={createSubmit}>submit</button>
+        
     </div>
   </>
 
