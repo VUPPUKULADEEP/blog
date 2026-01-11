@@ -59,14 +59,14 @@ export default function PrimarySearchAppBar() {
 
           {/* 🔹 DESKTOP ICONS */}
           <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
-  <IconButton color="inherit" onClick={() => navigate('/blog/create')}>
-    <AddIcon />
-  </IconButton>
+            <IconButton color="inherit" onClick={() => navigate('/blog/create')}>
+              <AddIcon />
+            </IconButton>
 
-  <IconButton color="inherit" onClick={handleProfileMenuOpen}>
-    <AccountCircle />
-  </IconButton>
-</Box>
+            <IconButton color="inherit" onClick={handleProfileMenuOpen}>
+              <AccountCircle />
+            </IconButton>
+          </Box>
 
 
           {/* 🔹 MOBILE MENU ICON */}
@@ -75,7 +75,7 @@ export default function PrimarySearchAppBar() {
               color="inherit"
               onClick={handleMobileMenuOpen}
             >
-              
+
             </IconButton>
           </Box>
 
@@ -110,6 +110,10 @@ export default function PrimarySearchAppBar() {
 
         <MenuItem
           onClick={() => {
+            console.log('Before:', localStorage.getItem('user'));
+            localStorage.removeItem('user');
+            console.log('After:', localStorage.getItem('user'));
+
             handleMobileMenuClose();
             navigate('/');
           }}
@@ -122,13 +126,18 @@ export default function PrimarySearchAppBar() {
       <Menu
         anchorEl={anchorEl}
         open={isMenuOpen}
-        sx={{ display: 'flex' , justifyContent:'end'}}
+        sx={{ display: 'flex', justifyContent: 'end' }}
         onClose={handleMenuClose}
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       >
         <MenuItem onClick={() => navigate('/profile')}>Profile</MenuItem>
-        <MenuItem onClick={() => navigate('/')}>Logout</MenuItem>
+        <MenuItem onClick={() => {
+          console.log('Before:', localStorage.getItem('user'));
+          localStorage.removeItem('user');
+          console.log('After:', localStorage.getItem('user'));
+          navigate('/');
+        }}>Logout</MenuItem>
       </Menu>
 
     </Box>

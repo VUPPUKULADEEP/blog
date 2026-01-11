@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
+import { HashRouter, Routes, Route, Link } from "react-router-dom"
 import Signin from "../pages/Signin"
 import Signup from "../pages/Signup"
 import Home from "../pages/Home"
@@ -15,9 +15,9 @@ function App() {
   return (
     <>
     <LoginProvider>
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
-        <Route path="" element={<Welcome/>}/>
+        <Route path="/" element={<Welcome/>}/>
         <Route path="/home" element={<Home/>}/>
         <Route path="/signin" element={<Signin/>}/>
         <Route path="/signup" element={<Signup/>}/>
@@ -26,10 +26,8 @@ function App() {
         <Route path="/blog/edit/:id" element={<Blogedit/>}/>
         <Route path="/blog/create" element={<BlogCreate/>}/>
         <Route path="/dummy/post" element={<DummyPost/>}/>
-
-
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
     </LoginProvider>
     </>
   )
